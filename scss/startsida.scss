@@ -1,41 +1,56 @@
-@mixin heading-font($clr){
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+@mixin heading-font(){
+    font-family: sans-serif;
     font-weight: 700;
-    font-style: italic;
-    color: $clr;
 }
 
 :root {
-    --color-bg: pink;
+    --color-bg: white;
     --color-fg: black;
-    --color-heading1: green;
-    --color-heading2: blue;
+    --color-heading1: white;
+    --color-heading2: black;
 
     --radius: 0.6rem
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
+    margin: 0;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 2.5fr minmax(150px, 1fr);
+    grid-template-rows: 150px 3.5fr 100px;
+
+    grid-template-areas: "header header header"
+                         "main main main"
+                         "footer footer footer";
+
     background-color: var(--color-bg);
     color: var(--color-fg);
 }
 
-
-@for $i from 1 through 6 {
-    h#{$i} {
-        @if $i <= 3 {
-            @include heading-font(var(--color-heading1));
-        } @else {
-            @include heading-font(var(--color-heading2));
-        }
-        font-size: 3 / $i + 0.5rem;
-    }
+main{
+    grid-area: main;
+    align-content: center;  
+    display: grid;
 }
+
+header{
+    @include heading-font();
+
+    grid-area: header;
+    text-align: center;
+    
+}
+
+footer{
+    
+}
+
+video{
+    width: 70rem;
+    
+}
+
 
 h1, h2, h3, h4, h5, h6, p, ol, ul {
     + {
@@ -44,17 +59,6 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
         }
     }
     
-}
-
-
-#test{
-    width: 30rem;
-    height: 5rem;
-
-    background-color: var(--color-heading2);
-    border-radius: calc(3*var(--radius));
-    border-bottom-left-radius: var(--radius);
-
 }
 
 @media (prefers-color-scheme: dark){
