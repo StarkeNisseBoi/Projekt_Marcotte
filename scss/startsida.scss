@@ -8,6 +8,7 @@
     --color-fg: black;
     --color-heading1: white;
     --color-heading2: black;
+    --color-footer: rgb(232, 230, 230);
 
     --radius: 0.6rem
 }
@@ -17,12 +18,12 @@ body{
     min-height: 100vh;
 
     display: grid;
-    grid-template-columns: 2.5fr minmax(150px, 1fr);
-    grid-template-rows: 150px 3.5fr 100px;
+    grid-template-columns: auto;
+    grid-template-rows: min-content 1fr min-content;
 
-    grid-template-areas: "header header header"
-                         "main main main"
-                         "footer footer footer";
+    grid-template-areas: "header"
+                         "main"
+                         "footer";
 
     background-color: var(--color-bg);
     color: var(--color-fg);
@@ -32,6 +33,8 @@ main{
     grid-area: main;
     align-content: center;  
     display: grid;
+
+    
 }
 
 header{
@@ -39,15 +42,61 @@ header{
 
     grid-area: header;
     text-align: center;
+    border-bottom: 4mm ridge rgba(139, 139, 136, 0.6);
+    
+    padding: 1vh;
+}
+
+.button{
+    @include heading-font();
+
+    display: block;
+
+    
+    height: 5rem;
+    background-color:var(--color-footer); ;
+    border-radius: calc(3 * var(--radius));
+    font-size: 1.8rem;
+    text-align: center;
+    align-content: center;
+}
+
+nav{
+    display: grid;
+    justify-content: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.button:hover{
+    padding: 0.5rem;
+    background-color: var(--color-bg);
+    border-radius: var(--radius);
+
+}
+
+h2{
+    @include heading-font();
     
 }
 
 footer{
-    
+    grid-area: footer;
+    background-color: var(--color-footer);
+    align-content: center;
+    padding: 1rem;
 }
 
 video{
-    width: 70rem;
+    width: 100%;
+    
     
 }
 
@@ -67,7 +116,42 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
         --color-fg: white;
         --color-heading1: #ccffcc;
         --color-heading2: #aaaaff;
+        --color-footer: #737373;
     }
    
 }
 
+@media screen and (min-width: 768px){
+
+    body{
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 2.5fr minmax(150px, 1fr);
+        grid-template-rows: 150px 3.5fr 100px;
+    
+        grid-template-areas: "header header"
+                             "main main"
+                             "footer footer";
+    }
+}
+
+@media screen and (min-width: 1200px){
+    body{
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 2.5fr minmax(150px, 1fr);
+        grid-template-rows: 150px 3.5fr 100px;
+    
+        grid-template-areas: "header header header"
+                             "main main maim"
+                             "footer footer footer";
+    }
+}
+
+@media screem and (prefers-reduced-motion){
+    header nav li{
+        transition: none;
+    }
+}
