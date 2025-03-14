@@ -1,7 +1,8 @@
-@mixin heading-font(){
+@mixin heading-font() {
     font-family: sans-serif;
     font-weight: 700;
 }
+
 
 :root {
     --color-bg: white;
@@ -9,12 +10,11 @@
     --color-heading1: white;
     --color-heading2: black;
     --color-footer: rgb(232, 230, 230);
-    --color-hover: rgb(174, 174, 174);
 
     --radius: 0.6rem
 }
 
-body{
+body {
     margin: 0;
     min-height: 100vh;
 
@@ -28,69 +28,62 @@ body{
 
     background-color: var(--color-bg);
     color: var(--color-fg);
+
+    gap: 0.4rem;
 }
 
-main{
-    grid-area: main;
-    align-content: center;  
-    display: grid;
 
-    
-}
-
-header{
+header {
     @include heading-font();
 
     grid-area: header;
     text-align: center;
     border-bottom: 4mm ridge rgba(139, 139, 136, 0.6);
-    
+
     padding: 1vh;
-}
 
-.button{
-    @include heading-font();
-
-    display: block;
-
-    
-    height: 5rem;
-    background-color:var(--color-footer);
-    color: var(--color-fg);
-    border-radius: calc(3 * var(--radius));
-    font-size: 1.8rem;
-    text-align: center;
-    align-content: center;
-}
-
-nav{
-    display: grid;
-    justify-content: center;
 }
 
 ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
-a{
+a {
     text-decoration: none;
     color: var(--color-fg);
 }
 
-.button:hover{
-    padding: 0.5rem;
-    background-color: var(--color-hover);
+
+main{
+    grid-area: main;
+    justify-content: center;  
+    display: grid;
+
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-fg);
+}
+
+article{
+    padding: 0.3rem;
+    outline: auto;
+    outline-color: black;
     border-radius: var(--radius);
-
+    text-decoration: none;
+    color: var(--color-fg);
 }
 
-h2{
-    @include heading-font();
-    
-}
 
-footer{
+
+
+
+footer {
     @include heading-font();
     grid-area: footer;
     background-color: var(--color-footer);
@@ -98,32 +91,17 @@ footer{
     padding: 1rem;
 }
 
-video{
-    width: 100%;
-    
-    
-}
-
-
-h1, h2, h3, h4, h5, h6, p, ol, ul {
-    + {
-        h1, h2, h3, h4, h5, h6, p, ol, ul{
-            margin-top: 0.5rem;
-        }
-    }
-    
-}
-
-@media (prefers-color-scheme: dark){
-    :root{
+@media (prefers-color-scheme: dark) {
+    :root {
         --color-bg: rgb(56, 56, 56);
         --color-fg: white;
         --color-heading1: #ccffcc;
         --color-heading2: white;
         --color-footer: #737373;
     }
-   
+
 }
+
 
 @media screen and (min-width: 768px){
 
@@ -139,6 +117,10 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
                              "footer footer";
     }
 
+    section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 
     footer {
         @include heading-font();
@@ -147,10 +129,6 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
         align-content: center;
         padding: 1rem;
     }
-
-
-
-
 }
 
 @media screen and (min-width: 1200px){
@@ -162,8 +140,14 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
         grid-template-rows: min-content 3.5fr min-content;
     
         grid-template-areas: "header header header"
-                             "main main maim"
+                             "main main main"
                              "footer footer footer";
+    }
+
+    section{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 3rem;
     }
 
     footer {
@@ -172,10 +156,7 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
         background-color: var(--color-footer);
         align-content: center;
         padding: 1rem;
-    }
-
-
-    
+    }    
 }
 
 @media screem and (prefers-reduced-motion){
