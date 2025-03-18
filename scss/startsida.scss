@@ -79,7 +79,7 @@ a{
 }
 
 .button:hover{
-    padding: 0.5rem;
+    //padding: 0.5rem;
     background-color: var(--color-hover);
     border-radius: var(--radius);
 
@@ -148,8 +148,26 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
         padding: 1rem;
     }
 
+    .button{
+        @include heading-font();
+    
+        display: block;
+    
+        
+        height: 7rem;
+        background-color:var(--color-footer);
+        color: var(--color-fg);
+        border-radius: calc(3 * var(--radius));
+        font-size: 3rem;
+        text-align: center;
+        align-content: center;
+    }
 
-
+    nav{
+        display: grid;
+        justify-content: start;
+        padding-left: 5rem;
+    }
 
 }
 
@@ -166,6 +184,46 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
                              "footer footer footer";
     }
 
+    video{
+        width: 100%;  
+        
+    }
+
+    main{
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+
+    }
+
+    nav{
+        padding: 0;
+        display: grid;
+        flex-direction: column;
+
+        
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        
+        //padding-right: 10%;
+    }
+
+    .button{
+        @include heading-font();
+
+        display: block;
+
+    
+        height: 10rem;
+        background-color:var(--color-footer);
+        color: var(--color-fg);
+        border-radius: calc(3 * var(--radius));
+        font-size: 3rem;
+        text-align: center;
+        align-content: center;
+    }
+
+
     footer {
         @include heading-font();
         grid-area: footer;
@@ -176,10 +234,4 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
 
 
     
-}
-
-@media screem and (prefers-reduced-motion){
-    header nav li{
-        transition: none;
-    }
 }

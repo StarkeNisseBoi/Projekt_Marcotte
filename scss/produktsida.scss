@@ -23,8 +23,8 @@ body {
     grid-template-rows: min-content 1fr min-content;
 
     grid-template-areas: "header"
-                         "main"
-                         "footer";
+        "main"
+        "footer";
 
     background-color: var(--color-bg);
     color: var(--color-fg);
@@ -54,40 +54,29 @@ a {
     color: var(--color-fg);
 }
 
+h1,
+h3,
+p {
+    @include heading-font();
+}
 
-main{
+.text {
+    padding: 1rem;
+}
+
+
+main {
     grid-area: main;
-    justify-content: center;  
+    justify-content: center;
     display: grid;
 
 }
 
-h2, p{  
-    @include heading-font();
-
-}
-
-section{
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    color: var(--color-fg);
-}
-
-article{
-    padding: 0.3rem;
-    outline: auto;
-    outline-color: black;
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--color-fg);
-
-}
-
-article:hover{
-    background-color: var(--color-fg);
-    color: var(--color-bg)
+    //gap: 1rem;
 }
 
 footer {
@@ -110,23 +99,59 @@ footer {
 }
 
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
 
-    body{
+    body {
         margin: 0;
         min-height: 100vh;
         display: grid;
         grid-template-columns: 2.5fr minmax(150px, 1fr);
         grid-template-rows: min-content 3.5fr min-content;
-    
+
         grid-template-areas: "header header"
-                             "main main"
-                             "footer footer";
+            "main main"
+            "footer footer";
     }
 
-    section{
+
+    section {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 0.5fr 1fr;
+        grid-template-rows: repeat(3, min-content) 1fr;
+        grid-template-areas: "picture title"
+            "picture price"
+            "picture productinfo"
+            "picture text";
+        padding: 3rem;
+    }
+
+    picture {
+        grid-area: picture;
+        padding-right: 1rem;
+
+    }
+
+    img {
+        width: 100%;
+
+    }
+
+    h1 {
+        grid-area: title;
+    }
+
+    .price {
+        grid-area: price;
+    }
+
+    h3 {
+        grid-area: productinfo;
+    }
+
+    .text {
+        justify-self:start;
+        align-self: start;
+        grid-area: text;
     }
 
     footer {
@@ -138,23 +163,62 @@ footer {
     }
 }
 
-@media screen and (min-width: 1200px){
-    body{
+@media screen and (min-width: 1200px) {
+    body {
         margin: 0;
         min-height: 100vh;
         display: grid;
         grid-template-columns: 2.5fr minmax(150px, 1fr);
         grid-template-rows: min-content 3.5fr min-content;
-    
+
         grid-template-areas: "header header header"
-                             "main main main"
-                             "footer footer footer";
+            "main main main"
+            "footer footer footer";
     }
 
-    section{
+    section {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 0.5fr 1fr;
+        grid-template-rows: repeat(3, min-content) auto;
+        grid-template-areas: "picture title"
+                             "picture price"
+                             "productinfo productinfo"
+                             "text text";
         padding: 3rem;
+    }
+
+    picture {
+        grid-area: picture;
+        padding-right: 1rem;
+
+    }
+
+    img {
+        width: 100%;
+
+    }
+
+    h1 {
+        grid-area: title;
+        justify-self:baseline ;
+        align-self: end;
+        font-size: 2rem;
+    }
+
+    .price {
+        grid-area: price;
+        justify-self:start;
+        align-self: start;
+    }
+
+    h3 {
+        grid-area: productinfo;
+    }
+
+    .text {
+        justify-self:start;
+        align-self: start;
+        grid-area: text;
     }
 
     footer {
@@ -163,5 +227,5 @@ footer {
         background-color: var(--color-footer);
         align-content: center;
         padding: 1rem;
-    }    
+    }
 }
